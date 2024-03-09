@@ -24,7 +24,7 @@ public class Bus {
     @Temporal(TemporalType.DATE)
     private Date fromDate;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)  // Assuming toDate is also a date
     private Date toDate;
 
     private int totalDuration;
@@ -33,4 +33,8 @@ public class Bus {
     private double price;
     private int totalSeats;
     private int availableSeats;
+
+    @OneToOne
+    @JoinColumn(name = "driver_id")
+    private Driver driver;
 }

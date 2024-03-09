@@ -1,5 +1,6 @@
 package com.busReservationapp3.busReservationapp3.payload;
 
+import com.busReservationapp3.busReservationapp3.entity.Driver;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,4 +23,5 @@ public class BusDto {
     private double price;
     private int totalSeats;
     private int availableSeats;
+    private Driver driver;
 }
