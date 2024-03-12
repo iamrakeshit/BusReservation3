@@ -9,17 +9,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-//      http://localhost:8080/api/v2/busControl
-@RestController
-@RequestMapping("api/v2/busControl")
-public class BusController {
 
+import java.text.ParseException;
+
+@RestController
+@RequestMapping("/api/bus")
+public class BusController {
     @Autowired
     private BusService busService;
-    //      http://localhost:8080/api/v2/busControl
-    @PostMapping("/bus")
-    public ResponseEntity<BusDto> addBus(@RequestBody BusDto busDto) {
-        BusDto dto = busService.addBus(busDto);
-        return new ResponseEntity<>(dto, HttpStatus.CREATED);
+
+    //      http://localhost:8080/api/bus/add
+    @PostMapping("/add")
+    public ResponseEntity<String> addBus(@RequestBody BusDto busDto) throws ParseException {
+       busService.addBus(busDto);
+       return new ResponseEntity<>("Bus details added", HttpStatus.CREATED);
     }
 }
+// almost 50 min , subRoute is not saved 05.03.2024

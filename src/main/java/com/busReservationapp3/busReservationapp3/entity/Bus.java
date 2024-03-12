@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @Entity
 @AllArgsConstructor
@@ -18,23 +16,10 @@ public class Bus {
     @Column(name = "bus_number", unique = true)
     private String busNumber;
     private String busType;
-    private String fromDestination;
-    private String toDestination;
-
-    @Temporal(TemporalType.DATE)
-    private Date fromDate;
-
-    @Temporal(TemporalType.DATE)  // Assuming toDate is also a date
-    private Date toDate;
-
-    private int totalDuration;
-    private String fromTime;
-    private String toTime;
     private double price;
     private int totalSeats;
     private int availableSeats;
 
-    @OneToOne
-    @JoinColumn(name = "driver_id")
-    private Driver driver;
+    @OneToOne(mappedBy = "bus", cascade = CascadeType.ALL)
+    private Route route;
 }
